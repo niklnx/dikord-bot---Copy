@@ -1,5 +1,11 @@
 import random
 
+swearlist = ["pussy", "idiot", "piece of shit", "twat", "wanker", "son of a bitch", "son of a whore", "whore", "bitch", "holy raspberry", "cunt", "you blob", "ťuťu", "mother of Jesus"]
+
+questions = open("questions.txt", "r")
+data = questions.read()
+question_list = data.split("\n")
+
 def handle_response(message) -> str:
     p_message = message.lower()
     
