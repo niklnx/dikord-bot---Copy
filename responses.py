@@ -1,5 +1,7 @@
 import random
 import operator
+from googletrans import Translator, constants
+import googletrans
 
 
 kahoot = ["robert", "hugo", "jeníček", "mařenka", "sněhurka", "mechanický králíček", "klobouček", "mrkvička"]   # kahoot names
@@ -9,6 +11,10 @@ boobs = "boobs", "booba", "boob", "boobies"  #list for command boobies
 swearlist = open("swearwords.txt")
 data = swearlist.read()
 swearlist_list = data.split("\n")       #swearlist 
+
+quotes = open("quotes.txt")
+data = quotes.read()
+quotes_list = data.split("\n")   
 
 questions = open("questions.txt", "r")
 data = questions.read()
@@ -40,3 +46,8 @@ def handle_response(message) -> str:
     
     if operator.contains(p_message, "boo"):     #boo command
         return '*so scared o.o*'
+    
+    if operator.contains(p_message, "quote"):       #random quote
+        return str(random.choice(quotes_list))
+    
+    
