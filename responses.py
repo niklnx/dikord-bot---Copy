@@ -1,22 +1,21 @@
 import random
 import operator
-from googletrans import Translator, constants
-import googletrans
+import textove_soubory
 
 
 kahoot = ["robert", "hugo", "jeníček", "mařenka", "sněhurka", "mechanický králíček", "klobouček", "mrkvička"]   # kahoot names
 
 boobs = "boobs", "booba", "boob", "boobies"  #list for command boobies
 
-swearlist = open("swearwords.txt")
+swearlist = open("./textove_soubory/swearwords.txt")
 data = swearlist.read()
 swearlist_list = data.split("\n")       #swearlist 
 
-quotes = open("quotes.txt")
+quotes = open("./textove_soubory/quotes.txt")
 data = quotes.read()
 quotes_list = data.split("\n")   
 
-questions = open("questions.txt", "r")
+questions = open("./textove_soubory/questions.txt")
 data = questions.read()
 question_list = data.split("\n")        #topic questions 
 
@@ -24,13 +23,16 @@ def handle_response(message) -> str:
     p_message = message.lower()
     
     if operator.contains(p_message, "hey"): #if msg contains hey print haia
-            return 'Haia ^^'
+        return 'Haia ^^'
 
     if operator.contains(p_message, "roll"):    #roll dice
         return str(random.randint(1,6))
     
+    if operator.contains(p_message, "d20"):    #roll dice
+        return str(random.randint(1,20))
+    
     if operator.contains(p_message, "help"):        #print list of commands
-        return "`roll - random 1-6 number\nhey - haia ^^\nask stuff - random question\nfuck you - random swear  word\nkahoot - kahoot name \nhelp - commands !`"
+        return "`roll - random 1-6 number\nhey - haia ^^\nask stuff - random question\nkahoot - kahoot name\nquote - random quote \nhelp - commands`"
     
     if p_message in swearlist_list:     # answeing random swearword 
         return str(random.choice(swearlist_list))
